@@ -2,8 +2,10 @@ import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:anderson_olarte_8_2021_2_p1/components/loader_component.dart';
 import 'package:anderson_olarte_8_2021_2_p1/helpers/api_helper.dart';
 import 'package:anderson_olarte_8_2021_2_p1/models/country.dart';
+import 'package:anderson_olarte_8_2021_2_p1/models/flag.dart';
 import 'package:anderson_olarte_8_2021_2_p1/models/response.dart';
 import 'package:anderson_olarte_8_2021_2_p1/screens/information_screen.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -123,18 +125,29 @@ class _HomeScreenState extends State<HomeScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
-                          e.name, 
-                          style: TextStyle( fontSize: 20, ),
-                        ),
-                        Text(
-                          e.capital,
-                          style: TextStyle( fontSize: 20, ),
-                        ),
-                        Image(
-                          image: e.flag,
-                          width: 300,
-                        ),
+                        Text( 'Pais: ${e.name}', ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text( 'Capital: ${e.capital}', ),
+                        // ClipRRect(
+                        //   borderRadius: BorderRadius.circular(25),
+                        //   child: CachedNetworkImage(
+                        //     imageUrl: '${e.flags[0]}',
+                        //     errorWidget: (context, url, error) => Icon(Icons.error),
+                        //     fit: BoxFit.cover,
+                        //     height: 25,
+                        //     width: 25,
+                        //     placeholder: (context, url) => Image(
+                        //       image: AssetImage('assets/noimage.png'),
+                        //       fit: BoxFit.cover,
+                        //       height: 25,
+                        //       width: 25,
+                        //     ),
+                        //   ),
+                        // ),
                         Icon(Icons.arrow_forward_ios),
                       ],
                     ),
@@ -142,7 +155,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
             ),
-
           );
         }).toList(),
       ),
